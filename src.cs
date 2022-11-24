@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace PrimeNumbers
 {
     public class Solution
@@ -9,9 +12,14 @@ namespace PrimeNumbers
 
         public bool isPrime(int n)
         {
-            bool isPrimeFlag = true;
-
-            if (n % 2 == 0){
+            bool isPrimeFlag = false;
+            if(n < 2){
+                isPrimeFlag = false;
+            }
+            else if(n == 2){
+                isPrimeFlag = true;
+            }
+            else if (n % 2 == 0){
                 isPrimeFlag = false;
             }
 
@@ -41,6 +49,21 @@ namespace PrimeNumbers
                 }
             }
             return f;
+        }
+
+        public List<string> GetAllPrimes(string number){
+
+
+            //brute force
+            List<string> primeList1 = new List<string>();
+            int n = Convert.ToInt32(number);
+            for(int i = 2; i < n;i++){
+                if(isPrime(i)){
+                    primeList1.Add(i.ToString());
+                }
+            }
+
+            return primeList1;
         }
     }
 }
